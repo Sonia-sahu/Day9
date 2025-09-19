@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Employees{% endblock %}
+
+{% block content %}
+
+<h2>Employees</h2>
+
+<a href="{% url 'employee-new' %}" class="btn btn-primary mb-3">+ Add Employee</a>
+
+<table class="table table-bordered">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>Emp ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for emp in object_list %}
+
+        <tr>
+
+            <td>{{ emp.empid }}</td>
+
+            <td><a href="{% url 'employee-detail' emp.empid %}">{{ emp.name }}</a></td>
+
+            <td>{{ emp.designation }}</td>
+
+            <td>{{ emp.department.deptname }}</td>
+
+            <td>
+
+                <a href="{% url 'employee-edit' emp.empid %}" class="btn btn-warning btn-sm">Edit</a>
+
+                <a href="{% url 'employee-delete' emp.empid %}" class="btn btn-danger btn-sm">Delete</a>
+
+            </td>
+
+        </tr>
+
+        {% empty %}
+
+        <tr>
+            <td colspan="5" class="text-center">No employees found</td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+
+{% block title %}Employee Detail{% endblock %} 
+
+{% block content %} 
+
+<h2>Employee: {{ object.name }}</h2> 
+
+<ul class="list-group mb-3"> 
+
+  <li class="list-group-item"><strong>ID:</strong> {{ object.empid }}</li> 
+
+  <li class="list-group-item"><strong>Designation:</strong> {{ object.designation }}</li> 
+
+  <li class="list-group-item"><strong>Department:</strong> {{ object.department.deptname }}</li> 
+
+</ul> 
+
+<a href="{% url 'employee-edit' object.empid %}" class="btn btn-warning">Edit</a> 
+
+<a href="{% url 'employee-delete' object.empid %}" class="btn btn-danger">Delete</a> 
+
+<a href="{% url 'employee-list' %}" class="btn btn-secondary">Back</a> 
+
+{% endblock %} 

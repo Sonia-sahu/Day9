@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+
+{% block title %}Department Detail{% endblock %} 
+
+{% block content %} 
+
+<h2>Department: {{ object.deptname }}</h2> 
+
+<ul class="list-group mb-3"> 
+
+  <li class="list-group-item"><strong>ID:</strong> {{ object.id }}</li> 
+
+  <li class="list-group-item"><strong>HOD:</strong> {{ object.hod }}</li> 
+
+  <li class="list-group-item"><strong>Location:</strong> {{ object.location }}</li> 
+
+</ul> 
+
+<a href="{% url 'department-update' object.id %}" class="btn btn-warning">Edit</a> 
+
+<a href="{% url 'department-delete' object.id %}" class="btn btn-danger">Delete</a> 
+
+<a href="{% url 'department-list' %}" class="btn btn-secondary">Back</a> 
+
+{% endblock %} 
